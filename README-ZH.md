@@ -7,6 +7,13 @@
 
 本项目是基于 Google 官方 [AI Edge Gallery](https://github.com/google-ai-edge/gallery) 的深度定制与本地化增强版本，专为国内开发者与用户打造，致力于扫清在国内体验 **Gemma 4** 等前沿端侧多模态模型时的种种障碍。
 
+## 📱 应用预览
+
+<p float="left">
+  <img width="300" alt="01" src="https://github.com/user-attachments/assets/a809ad78-aef4-4169-91ee-de7213cbb3bd" />
+  <img width="300" alt="02" src="https://github.com/user-attachments/assets/1effd10d-f45a-4f7b-9435-f50f1bdd36b6" />
+  <img width="300" alt="03" src="https://github.com/user-attachments/assets/e5089e41-2c18-4fbe-9011-ebe9e5a02044" />
+</p>
 ## 🚀 核心升级与特性 (相较于原版)
 
 - 🇨🇳 **全中文界面适配**: 无死角覆盖了所有提示词、设置项与模型配置面板，小白用户也能零门槛轻松上手。
