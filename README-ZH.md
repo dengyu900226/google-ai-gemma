@@ -10,9 +10,9 @@
 ## 📱 应用预览
 
 <p float="left">
-  <img width="300" alt="01" src="https://github.com/user-attachments/assets/a809ad78-aef4-4169-91ee-de7213cbb3bd" />
-  <img width="300" alt="02" src="https://github.com/user-attachments/assets/1effd10d-f45a-4f7b-9435-f50f1bdd36b6" />
-  <img width="300" alt="03" src="https://github.com/user-attachments/assets/e5089e41-2c18-4fbe-9011-ebe9e5a02044" />
+  <img width="300" alt="01" src="./img/20260407151830.jpg" />
+  <img width="300" alt="02" src="./img/20260407151907.jpg" />
+  <img width="300" alt="03" src="./img/20260407151914.jpg" />
 </p>
 ## 🚀 核心升级与特性 (相较于原版)
 
