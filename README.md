@@ -1,87 +1,48 @@
-# Google AI Edge Gallery ✨
+# Google AI Edge Gemma Modified Edition ✨
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/google-ai-edge/gallery)](https://github.com/google-ai-edge/gallery/releases)
+[![GitHub release](https://img.shields.io/github/v/release/iuaihub/google-ai-gemma)](https://github.com/iuaihub/google-ai-gemma/releases)
 
-**Explore, Experience, and Evaluate the Future of On-Device Generative AI with Google AI Edge.**
+**Explore, Experience, and Discover! Run the world's most powerful open-source on-device generative AI models directly on your mobile device. Fully offline, privacy-first, and lightning-fast.**
 
-AI Edge Gallery is the premier destination for running the world's most powerful open-source Large Language Models (LLMs) on your mobile device. Experience high-performance Generative AI directly on your hardware—fully offline, private, and lightning-fast.
+This project is a deeply customized and localized enhancement based on the official Google [AI Edge Gallery](https://github.com/google-ai-edge/gallery). It is tailor-made for specific domestic developers and users, aiming to clear various obstacles when experiencing cutting-edge multimodal models like **Gemma 4** within restricted networks.
 
-**Now Featuring: Gemma 4**
+## 📱 App Preview
 
-The latest version brings official support for the newly released Gemma 4 family. As the centerpiece of this release, Gemma 4 allows you to test the cutting edge of on-device AI. Experience advanced reasoning, logic, and creative capabilities without ever sending your data to a server.
+<p float="left">
+  <img width="300" alt="01" src="https://github.com/user-attachments/assets/a809ad78-aef4-4169-91ee-de7213cbb3bd" />
+  <img width="300" alt="02" src="https://github.com/user-attachments/assets/1effd10d-f45a-4f7b-9435-f50f1bdd36b6" />
+  <img width="300" alt="03" src="https://github.com/user-attachments/assets/e5089e41-2c18-4fbe-9011-ebe9e5a02044" />
+</p>
 
+## 🚀 Core Upgrades & Features (Compared to Original)
 
-| **Install the app today from Google Play** | **Install the app today from App Store** |
-| :--- | :--- |
-| <a href='https://play.google.com/store/apps/details?id=com.google.ai.edge.gallery'><img alt='Get it on Google Play' height="120" src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a> | <a href="https://apps.apple.com/us/app/google-ai-edge-gallery/id6749645337?itscg=30200&itsct=apps_box_badge&mttnsubad=6749645337" style="display: inline-block;"> <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1771977600" alt="Download on the App Store" style="width: 246px; height: 90px; vertical-align: middle; object-fit: contain;" /></a> |
+- 🇨🇳 **Full Chinese UI Localization**: 100% coverage of all prompts, settings, and model configuration panels into Simplified Chinese, making it zero-barrier for native users.
+- ⚡ **Direct Domestic Model Downloads**: Removed the rigid network reliance on Hugging Face's main overseas servers. You will no longer encounter the `unknown network error` freeze during downloads, enabling seamless full-speed downloads locally.
+- 🗣️ **Native Streaming TTS (Text-to-Speech)**: Introduced a brand-new underlying engine `TtsManager` so the model's output is no longer cold text. With ultra-fast sentence chunking via regex, the model speaks through the device's native high-quality TTS engine synchronously as the short sentences are generated.
+- 🔊 **Multi-Round Audio Boundaries Unlocked**: Under the "Audio Scribe" multimodal audio task, the originally rigid single-audio limit parameter (`MAX_AUDIO_CLIP_COUNT = 1`) has been lifted. You can now input multiple continuous voice commands. (*Note: If your device runs out of memory or hits an OOM due to edge capabilities, manually click the Broom icon at the top right to reset the Session and free up GPU memory*).
 
-For users without Google Play access, install the apk from the [**latest release**](https://github.com/google-ai-edge/gallery/releases/latest/)
+## 🆕 One-Tap Edge Capabilities
 
+Gemma 4 condenses massive knowledge deeply into phone memory, working flawlessly without an internet connection:
+- **Agent Skills**: Features Wikipedia knowledge and math engine executions.
+- **Thinking Mode**: Transparent Chain of Thought (CoT) revealing full reasoning processes.
+- **Ask Image**: Snap a photo or read from the gallery for visual analysis.
+- **Audio Scribe**: Uninterrupted HD voice recognition and semantic reply (Heavy Upgrade!).
 
-## App Preview
+## 🛠️ Build & Compilation Requirements
 
-<img width="480" alt="01" src="https://github.com/user-attachments/assets/a809ad78-aef4-4169-91ee-de7213cbb3bd" />
-<img width="480" alt="02" src="https://github.com/user-attachments/assets/1effd10d-f45a-4f7b-9435-f50f1bdd36b6" />
-<img width="480" alt="03" src="https://github.com/user-attachments/assets/e5089e41-2c18-4fbe-9011-ebe9e5a02044" />
-<img width="480" alt="04" src="https://github.com/user-attachments/assets/0f39d3ed-7403-4606-a7c6-b2c7e51ba6c1" />
-<img width="480" alt="05" src="https://github.com/user-attachments/assets/8c229e96-b598-4735-9f60-e96907e1d5d5" />
-<img width="480" alt="06" src="https://github.com/user-attachments/assets/ac9fb77b-81de-4197-9ed3-f6fe58290b3e" />
-<img width="480" alt="07" src="https://github.com/user-attachments/assets/bc86ba07-2eaf-49b1-980f-8a87a85c596f" />
-<img width="480" alt="08" src="https://github.com/user-attachments/assets/061564ed-030f-4630-810b-13a7863fce4c" />
+- **IDE**: Recommended latest Android Studio.
+- **OS Environment**: Supports Android 11+ and above devices (API Level 31+).
+- **JDK Requirements**: This project relies on recent Gradle plugins. Your global environment variable in Windows/macOS MUST be configured with **Java 11 or Java 17** (Java 8 is no longer supported).
 
-## ✨ Core Features
+### 📱 Permissions & Device Privacy
 
-* **Agent Skills**: Transform your LLM from a conversationalist into a proactive assistant. Use the Agent Skills tile to augment model capabilities with tools like Wikipedia for fact-grounding, interactive maps, and rich visual summary cards. You can even load modular skills from a URL or browse community contributions on GitHub Discussions.
+This app will request **Camera** and **Microphone** permissions for your device to ensure visual and auditory modalities. Rest assured, all multimodal token analyses and tensor inferences are executed **100% locally on your Edge GPU/CPU**, absolutely guaranteeing user privacy.
 
-* **AI Chat with Thinking Mode**: Engage in fluid, multi-turn conversations and toggle the new Thinking Mode to peek "under the hood." This feature allows you to see the model’s step-by-step reasoning process, which is perfect for understanding complex problem-solving. Note: Thinking Mode currently works with supported models, starting with the Gemma 4 family.
+**⚠️ Safe Use & Disclaimer**
+The responses of large edge language models are generated by parameter probabilities. Developers studying or redistributing this project are requested to comply with local laws and regulations (e.g., China's Generative AI Service Management Interim Measures). **It is strictly prohibited to use this project or built-in models to spread any illegal, pornographic, terrorist, or state-subversive content.** The generated texts might sporadically suffer from hallucinations and must not be utilized as definitive evidence for precision medical, judicial, or financial decisions without validation.
 
-* **Ask Image**: Use multimodal power to identify objects, solve visual puzzles, or get detailed descriptions using your device’s camera or photo gallery.
+## 🤝 Open Source License
 
-* **Audio Scribe**: Transcribe and translate voice recordings into text in real-time using high-efficiency on-device language models.
-
-* **Prompt Lab**: A dedicated workspace to test different prompts and single-turn use cases with granular control over model parameters like temperature and top-k.
-
-* **Mobile Actions**: Unlock offline device controls and automated tasks powered entirely by a finetune of FuntionGemma 270m.
-
-* **Tiny Garden**: A fun, experimental mini-game that uses natural language to plant and harvest a virtual garden using a finetune of FunctionGemma 270m.
-
-* **Model Management & Benchmark**: Gallery is a flexible sandbox for a wide variety of open-source models. Easily download models from the list or load your own custom models. Manage your model library effortlessly and run benchmark tests to understand exactly how each model performs on your specific hardware.
-
-* **100% On-Device Privacy**: All model inferences happen directly on your device hardware. No internet is required, ensuring total privacy for your prompts, images, and sensitive data.
-
-## 🏁 Get Started in Minutes!
-
-1. **Check OS Requirement**: Android 12 and up, and iOS 17 and up.
-2.  **Download the App:**
-    - Install the app from [Google Play](https://play.google.com/store/apps/details?id=com.google.ai.edge.gallery) or [App Store](https://apps.apple.com/us/app/google-ai-edge-gallery/id6749645337).
-    - For users without Google Play access: install the apk from the [**latest release**](https://github.com/google-ai-edge/gallery/releases/latest/)
-3.  **Install & Explore:** For detailed installation instructions (including for corporate devices) and a full user guide, head over to our [**Project Wiki**](https://github.com/google-ai-edge/gallery/wiki)!
-
-## 🛠️ Technology Highlights
-
-*   **Google AI Edge:** Core APIs and tools for on-device ML.
-*   **LiteRT:** Lightweight runtime for optimized model execution.
-*   **Hugging Face Integration:** For model discovery and download.
-
-## ⌨️ Development
-
-Check out the [development notes](DEVELOPMENT.md) for instructions about how to build the app locally.
-
-## 🤝 Feedback
-
-This is an **experimental Beta release**, and your input is crucial!
-
-*   🐞 **Found a bug?** [Report it here!](https://github.com/google-ai-edge/gallery/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5BBUG%5D)
-*   💡 **Have an idea?** [Suggest a feature!](https://github.com/google-ai-edge/gallery/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=%5BFEATURE%5D)
-
-## 📄 License
-
-Licensed under the Apache License, Version 2.0. See the [LICENSE](LICENSE) file for details.
-
-## 🔗 Useful Links
-
-*   [**Project Wiki (Detailed Guides)**](https://github.com/google-ai-edge/gallery/wiki)
-*   [Hugging Face LiteRT Community](https://huggingface.co/litert-community)
-*   [LiteRT-LM](https://github.com/google-ai-edge/LiteRT-LM)
-*   [Google AI Edge Documentation](https://ai.google.dev/edge)
+This project continues to conform to the [Apache 2.0 License](LICENSE) specifications. The core framework originates from the Google AI Edge engineering and has been deeply explored and improved by the community. You are welcome to submit Issues or Pull Requests to build the mobile AI ecosystem together!
