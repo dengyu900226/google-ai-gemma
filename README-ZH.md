@@ -10,9 +10,9 @@
 ## 📱 应用预览
 
 <p float="left">
-  <img width="300" alt="01" src="./img/20260407151830.jpg" />
+  <img width="300" alt="01" src="./img/20260407151914.jpg" />
   <img width="300" alt="02" src="./img/20260407151907.jpg" />
-  <img width="300" alt="03" src="./img/20260407151914.jpg" />
+  <img width="300" alt="03" src="./img/20260407151830.jpg" />
 </p>
 ## 🚀 核心升级与特性 (相较于原版)
 
