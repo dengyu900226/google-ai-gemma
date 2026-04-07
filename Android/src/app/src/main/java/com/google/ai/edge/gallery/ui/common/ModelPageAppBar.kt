@@ -28,6 +28,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.MapsUgc
 import androidx.compose.material.icons.rounded.Tune
+import androidx.compose.material.icons.rounded.VolumeOff
+import androidx.compose.material.icons.rounded.VolumeUp
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -145,18 +147,32 @@ fun ModelPageAppBar(
       val downloadSucceeded = curDownloadStatus?.status == ModelDownloadStatusType.SUCCEEDED
       val showConfigButton = model.configs.isNotEmpty() && downloadSucceeded
       val showResetSessionButton = canShowResetSessionButton && downloadSucceeded
-      Box(modifier = Modifier.size(42.dp), contentAlignment = Alignment.Center) {
-        var configButtonOffset = 0.dp
-        if (showConfigButton && canShowResetSessionButton) {
-          configButtonOffset = (-40).dp
-        }
+      val isLlmTask =
+        task.id == BuiltInTaskId.LLM_CHAT ||
+        task.id == BuiltInTaskId.LLM_AGENT_CHAT ||
+        task.id == BuiltInTaskId.LLM_ASK_AUDIO ||
+        task.id == BuiltInTaskId.LLM_ASK_IMAGE
+      val isTtsMuted = modelManagerUiState.isTtsMuted
+      Box(modifier = Modifier.size(126.dp), contentAlignment = Alignment.CenterEnd) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+          if (isLlmTask) {
+            IconButton(
+              onClick = { modelManagerViewModel.toggleTtsMute() },
+            ) {
+              Icon(
+                imageVector = if (isTtsMuted) Icons.Rounded.VolumeOff else Icons.Rounded.VolumeUp,
+                contentDescription = if (isTtsMuted) "Unmute" else "Mute",
+                tint = MaterialTheme.colorScheme.onSurface,
+                modifier = Modifier.size(20.dp),
+              )
+            }
+          }
         if (showConfigButton) {
           val enableConfigButton = !isModelInitializing && !inProgress && isModelInitialized
           IconButton(
             onClick = { showConfigDialog = true },
             enabled = enableConfigButton,
-            modifier =
-              Modifier.offset(x = configButtonOffset).alpha(if (!enableConfigButton) 0.5f else 1f),
+            modifier = Modifier.alpha(if (!enableConfigButton) 0.5f else 1f),
           ) {
             Icon(
               imageVector = Icons.Rounded.Tune,
@@ -198,7 +214,8 @@ fun ModelPageAppBar(
             }
           }
         }
-      }
+        } // End Row
+      } // End Box
     },
   )
 

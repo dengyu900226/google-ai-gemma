@@ -37,6 +37,7 @@ import com.google.ai.edge.gallery.ui.modelmanager.ModelManagerViewModel
 import com.google.ai.edge.litertlm.Contents
 import com.google.ai.edge.litertlm.ExperimentalApi
 import com.google.ai.edge.litertlm.ToolProvider
+import com.google.ai.edge.gallery.common.TtsManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -46,7 +47,7 @@ import kotlinx.coroutines.launch
 private const val TAG = "AGLlmChatViewModel"
 
 @OptIn(ExperimentalApi::class)
-open class LlmChatViewModelBase() : ChatViewModel() {
+open class LlmChatViewModelBase(val ttsManager: TtsManager? = null) : ChatViewModel() {
   fun generateResponse(
     model: Model,
     input: String,
@@ -80,12 +81,37 @@ open class LlmChatViewModelBase() : ChatViewModel() {
       var firstRun = true
       val start = System.currentTimeMillis()
 
+      val sentenceBuffer = StringBuilder()
+
       try {
         val resultListener: (String, Boolean, String?) -> Unit =
           { partialResult, done, partialThinkingResult ->
             if (partialResult.startsWith("<ctrl")) {
               // Do nothing. Ignore control tokens.
             } else {
+              // TTS Logic
+              if (partialResult.isNotEmpty()) {
+                sentenceBuffer.append(partialResult)
+                var match = Regex("([。！？.!?\n]+)").find(sentenceBuffer.toString())
+                while (match != null) {
+                  val splitIndex = match.range.last + 1
+                  val sentenceToSpeak = sentenceBuffer.substring(0, splitIndex)
+                  Log.d(TAG, "Chunk detected, sending to TTS: $sentenceToSpeak")
+                  ttsManager?.speak(sentenceToSpeak)
+                  sentenceBuffer.delete(0, splitIndex)
+                  match = Regex("([。！？.!?\n]+)").find(sentenceBuffer.toString())
+                }
+              }
+              
+              if (done) {
+                if (sentenceBuffer.isNotEmpty()) {
+                  val remainingText = sentenceBuffer.toString()
+                  Log.d(TAG, "Generation done, sending remaining to TTS: $remainingText")
+                  ttsManager?.speak(remainingText)
+                  sentenceBuffer.clear()
+                }
+              }
+
               // Remove the last message if it is a "loading" message.
               // This will only be done once.
               val lastMessage = getLastMessage(model = model)
@@ -242,6 +268,7 @@ open class LlmChatViewModelBase() : ChatViewModel() {
     }
     setInProgress(false)
     model.runtimeHelper.stopResponse(model)
+    ttsManager?.stop() // Add TTS stop
     Log.d(TAG, "Done stopping response")
   }
 
@@ -341,8 +368,8 @@ open class LlmChatViewModelBase() : ChatViewModel() {
   }
 }
 
-@HiltViewModel class LlmChatViewModel @Inject constructor() : LlmChatViewModelBase()
+@HiltViewModel class LlmChatViewModel @Inject constructor(ttsManager: TtsManager) : LlmChatViewModelBase(ttsManager)
 
-@HiltViewModel class LlmAskImageViewModel @Inject constructor() : LlmChatViewModelBase()
+@HiltViewModel class LlmAskImageViewModel @Inject constructor(ttsManager: TtsManager) : LlmChatViewModelBase(ttsManager)
 
-@HiltViewModel class LlmAskAudioViewModel @Inject constructor() : LlmChatViewModelBase()
+@HiltViewModel class LlmAskAudioViewModel @Inject constructor(ttsManager: TtsManager) : LlmChatViewModelBase(ttsManager)

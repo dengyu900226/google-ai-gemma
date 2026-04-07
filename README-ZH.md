@@ -1,4 +1,4 @@
-# Google AI Edge Gemma 中文版 ✨
+# Google AI Edge Gemma 中文魔改版 ✨
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![GitHub release](https://img.shields.io/github/v/release/iuaihub/google-ai-gemma)](https://github.com/iuaihub/google-ai-gemma/releases)

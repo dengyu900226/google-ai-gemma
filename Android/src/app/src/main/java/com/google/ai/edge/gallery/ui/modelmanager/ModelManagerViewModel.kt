@@ -61,6 +61,7 @@ import java.net.HttpURLConnection
 import java.net.URL
 import javax.inject.Inject
 import kotlin.collections.sortedWith
+import com.google.ai.edge.gallery.common.TtsManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -143,6 +144,7 @@ data class ModelManagerUiState(
   val configValuesUpdateTrigger: Long = 0L,
   // Updated when model is imported of an imported model is deleted.
   val modelImportingUpdateTrigger: Long = 0L,
+  val isTtsMuted: Boolean = false,
 ) {
   fun isModelInitialized(model: Model): Boolean {
     return modelInitializationStatus[model.name]?.status ==
@@ -191,6 +193,7 @@ constructor(
   private val lifecycleProvider: AppLifecycleProvider,
   private val customTasks: Set<@JvmSuppressWildcards CustomTask>,
   @ApplicationContext private val context: Context,
+  val ttsManager: TtsManager,
 ) : ViewModel() {
   private val externalFilesDir = context.getExternalFilesDir(null)
   protected val _uiState = MutableStateFlow(createEmptyUiState())
@@ -274,6 +277,15 @@ constructor(
     if (_uiState.value.selectedModel.name != model.name) {
       _uiState.update { _uiState.value.copy(selectedModel = model) }
     }
+  }
+
+  fun toggleTtsMute() {
+    val newMuted = !_uiState.value.isTtsMuted
+    ttsManager.isMuted = newMuted
+    if (newMuted) {
+      ttsManager.stop()
+    }
+    _uiState.update { _uiState.value.copy(isTtsMuted = newMuted) }
   }
 
   fun downloadModel(task: Task?, model: Model) {
