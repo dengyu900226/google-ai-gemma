@@ -45,4 +45,8 @@ Gemma 4 将海量知识深度浓缩装入了手机内存。现在在断网环境
 
 ## 🤝 开源协议
 
-本项目持续遵循 [Apache 2.0 License](LICENSE) 规范，核心框架起源于 Google AI Edge 工程并由社区深度发掘改良。欢迎大家提 Issue 或者通过 Pull Request 一起建设移动端 AI 生态！<img width="300" alt="03" src="https://my9.ltd/img/iuai-qun.jpg" />
+本项目持续遵循 [Apache 2.0 License](LICENSE) 规范，核心框架起源于 Google AI Edge 工程并由社区深度发掘改良。欢迎大家提 Issue 或者通过 Pull Request 一起建设移动端 AI 生态！
+
+<p float="left">
+<img width="300" alt="03" src="https://my9.ltd/img/iuai-qun.jpg" />
+</p>
