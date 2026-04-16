@@ -156,7 +156,7 @@ fun DownloadAndTryButton(
   val isPartiallyDownloaded = downloadStatus?.status == ModelDownloadStatusType.PARTIALLY_DOWNLOADED
   val showDownloadProgress =
     !downloadSucceeded && (downloadStarted || checkingToken || inProgress || isPartiallyDownloaded)
-  var curDownloadProgress: Float
+  var curDownloadProgress: Float = 0f
 
   // A launcher for requesting notification permission.
   val permissionLauncher =

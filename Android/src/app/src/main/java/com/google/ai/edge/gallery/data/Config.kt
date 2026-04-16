@@ -17,6 +17,9 @@
 package com.google.ai.edge.gallery.data
 
 import androidx.annotation.StringRes
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
+import com.google.ai.edge.gallery.R
 import kotlin.math.abs
 
 /**
@@ -42,40 +45,43 @@ enum class ValueType {
   BOOLEAN,
 }
 
-data class ConfigKey(val id: String, val label: String)
+data class ConfigKey(val id: String, val label: String, @StringRes val labelRes: Int? = null) {
+  @Composable
+  fun getLabel(): String = if (labelRes != null) stringResource(labelRes) else label
+}
 
 object ConfigKeys {
-  val MAX_TOKENS = ConfigKey("max_tokens", "Max tokens")
-  val TOPK = ConfigKey("topk", "TopK")
-  val TOPP = ConfigKey("topp", "TopP")
-  val TEMPERATURE = ConfigKey("temperature", "Temperature")
-  val DEFAULT_MAX_TOKENS = ConfigKey("default_max_tokens", "Default max tokens")
-  val DEFAULT_TOPK = ConfigKey("default_topk", "Default TopK")
-  val DEFAULT_TOPP = ConfigKey("default_topp", "Default TopP")
-  val DEFAULT_TEMPERATURE = ConfigKey("default_temperature", "Default temperature")
-  val SUPPORT_IMAGE = ConfigKey("support_image", "Support image")
-  val SUPPORT_AUDIO = ConfigKey("support_audio", "Support audio")
-  val SUPPORT_TINY_GARDEN = ConfigKey("support_tiny_garden", "Support tiny garden")
-  val SUPPORT_MOBILE_ACTIONS = ConfigKey("support_mobile_actions", "Support mobile actions")
-  val SUPPORT_THINKING = ConfigKey("support_thinking", "Support thinking")
-  val ENABLE_THINKING = ConfigKey("enable_thinking", "Enable thinking")
-  val MAX_RESULT_COUNT = ConfigKey("max_result_count", "Max result count")
-  val USE_GPU = ConfigKey("use_gpu", "Use GPU")
-  val ACCELERATOR = ConfigKey("accelerator", "Accelerator")
-  val VISION_ACCELERATOR = ConfigKey("vision_accelerator", "Vision accelerator")
-  val COMPATIBLE_ACCELERATORS = ConfigKey("compatible_accelerators", "Compatible accelerators")
-  val WARM_UP_ITERATIONS = ConfigKey("warm_up_iterations", "Warm up iterations")
-  val BENCHMARK_ITERATIONS = ConfigKey("benchmark_iterations", "Benchmark iterations")
-  val ITERATIONS = ConfigKey("iterations", "Iterations")
-  val THEME = ConfigKey("theme", "Theme")
-  val NAME = ConfigKey("name", "Name")
-  val MODEL_TYPE = ConfigKey("model_type", "Model type")
-  val MODEL = ConfigKey("model", "Model")
+  val MAX_TOKENS = ConfigKey("max_tokens", "Max tokens", R.string.config_max_tokens)
+  val TOPK = ConfigKey("topk", "TopK", R.string.config_topk)
+  val TOPP = ConfigKey("topp", "TopP", R.string.config_topp)
+  val TEMPERATURE = ConfigKey("temperature", "Temperature", R.string.config_temperature)
+  val DEFAULT_MAX_TOKENS = ConfigKey("default_max_tokens", "Default max tokens", R.string.config_default_max_tokens)
+  val DEFAULT_TOPK = ConfigKey("default_topk", "Default TopK", R.string.config_default_topk)
+  val DEFAULT_TOPP = ConfigKey("default_topp", "Default TopP", R.string.config_default_topp)
+  val DEFAULT_TEMPERATURE = ConfigKey("default_temperature", "Default temperature", R.string.config_default_temperature)
+  val SUPPORT_IMAGE = ConfigKey("support_image", "Support image", R.string.config_support_image)
+  val SUPPORT_AUDIO = ConfigKey("support_audio", "Support audio", R.string.config_support_audio)
+  val SUPPORT_TINY_GARDEN = ConfigKey("support_tiny_garden", "Support tiny garden", R.string.config_support_tiny_garden)
+  val SUPPORT_MOBILE_ACTIONS = ConfigKey("support_mobile_actions", "Support mobile actions", R.string.config_support_mobile_actions)
+  val SUPPORT_THINKING = ConfigKey("support_thinking", "Support thinking", R.string.config_support_thinking)
+  val ENABLE_THINKING = ConfigKey("enable_thinking", "Enable thinking", R.string.config_enable_thinking)
+  val MAX_RESULT_COUNT = ConfigKey("max_result_count", "Max result count", R.string.config_max_result_count)
+  val USE_GPU = ConfigKey("use_gpu", "Use GPU", R.string.config_use_gpu)
+  val ACCELERATOR = ConfigKey("accelerator", "Accelerator", R.string.config_accelerator)
+  val VISION_ACCELERATOR = ConfigKey("vision_accelerator", "Vision accelerator", R.string.config_vision_accelerator)
+  val COMPATIBLE_ACCELERATORS = ConfigKey("compatible_accelerators", "Compatible accelerators", R.string.config_compatible_accelerators)
+  val WARM_UP_ITERATIONS = ConfigKey("warm_up_iterations", "Warm up iterations", R.string.config_warm_up_iterations)
+  val BENCHMARK_ITERATIONS = ConfigKey("benchmark_iterations", "Benchmark iterations", R.string.config_benchmark_iterations)
+  val ITERATIONS = ConfigKey("iterations", "Iterations", R.string.config_iterations)
+  val THEME = ConfigKey("theme", "Theme", R.string.config_theme)
+  val NAME = ConfigKey("name", "Name", R.string.config_name)
+  val MODEL_TYPE = ConfigKey("model_type", "Model type", R.string.config_model_type)
+  val MODEL = ConfigKey("model", "Model", R.string.config_model)
   val RESET_CONVERSATION_TURN_COUNT =
-    ConfigKey("reset_conversation_turn_count", "Number of turns before the conversation resets")
-  val PREFILL_TOKENS = ConfigKey("prefill_tokens", "Prefill tokens")
-  val DECODE_TOKENS = ConfigKey("decode_tokens", "Decode tokens")
-  val NUMBER_OF_RUNS = ConfigKey("number_of_runs", "Number of runs")
+    ConfigKey("reset_conversation_turn_count", "Number of turns before the conversation resets", R.string.config_reset_conversation_turn_count)
+  val PREFILL_TOKENS = ConfigKey("prefill_tokens", "Prefill tokens", R.string.config_prefill_tokens)
+  val DECODE_TOKENS = ConfigKey("decode_tokens", "Decode tokens", R.string.config_decode_tokens)
+  val NUMBER_OF_RUNS = ConfigKey("number_of_runs", "Number of runs", R.string.config_number_of_runs)
 }
 
 /**

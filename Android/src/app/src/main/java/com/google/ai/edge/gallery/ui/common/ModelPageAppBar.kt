@@ -165,7 +165,7 @@ fun ModelPageAppBar(
             ) {
               Icon(
                 imageVector = if (isTtsMuted) Icons.Rounded.VolumeOff else Icons.Rounded.VolumeUp,
-                contentDescription = if (isTtsMuted) "Unmute" else "Mute",
+                contentDescription = if (isTtsMuted) stringResource(R.string.cd_unmute) else stringResource(R.string.cd_mute),
                 tint = MaterialTheme.colorScheme.onSurface,
                 modifier = Modifier.size(20.dp),
               )
@@ -237,7 +237,7 @@ fun ModelPageAppBar(
       modelConfigs.removeIf { it.key == ConfigKeys.ENABLE_THINKING }
     }
     ConfigDialog(
-      title = "Configurations",
+      title = stringResource(R.string.config_dialog_title),
       configs = modelConfigs,
       initialValues = model.configValues,
       onDismissed = { showConfigDialog = false },

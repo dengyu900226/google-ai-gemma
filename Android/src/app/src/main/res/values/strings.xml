@@ -74,6 +74,7 @@
   <string name="color">Color</string>
   <string name="config_dialog_tab_model_configs">Model configs</string>
   <string name="config_dialog_tab_system_prompt">System prompt</string>
+  <string name="start">Start</string>
   <string name="continue_button_label">Continue</string>
   <string name="conversation_history">Conversation History</string>
   <string name="copy">Copy</string>
@@ -360,6 +361,10 @@
   <string name="cd_model_settings_icon">Model settings</string>
   <!-- Content description spoken when the "reset session" icon is focused. [CHAR_LIMIT=NONE] -->
   <string name="cd_reset_session_icon">Reset session</string>
+  <!-- Content description spoken when the "unmute" icon is focused. [CHAR_LIMIT=NONE] -->
+  <string name="cd_unmute">Unmute</string>
+  <!-- Content description spoken when the "mute" icon is focused. [CHAR_LIMIT=NONE] -->
+  <string name="cd_mute">Mute</string>
   <!-- Content description spoken when the "model picker chip" is focused. [CHAR_LIMIT=NONE] -->
   <string name="cd_change_model">Current model is %1$s. Tap to change model.</string>
   <!-- Content description spoken when the "close image viewer" icon is focused. [CHAR_LIMIT=NONE] -->
@@ -468,5 +473,38 @@
   <string name="promo_gm4_description">Built from the same world-class technology as Gemini 3, Gemma 4 brings frontier intelligence to your mobile and edge devices.</string>
   <string name="promo_gm4_dismiss">Dismiss</string>
   <string name="promo_gm4_read_more">Read more</string>
+
+  <!-- Strings for ConfigKeys -->
+  <string name="config_max_tokens">Max tokens</string>
+  <string name="config_dialog_title">Configurations</string>
+  <string name="config_topk">TopK</string>
+  <string name="config_topp">TopP</string>
+  <string name="config_temperature">Temperature</string>
+  <string name="config_default_max_tokens">Default max tokens</string>
+  <string name="config_default_topk">Default TopK</string>
+  <string name="config_default_topp">Default TopP</string>
+  <string name="config_default_temperature">Default temperature</string>
+  <string name="config_support_image">Support image</string>
+  <string name="config_support_audio">Support audio</string>
+  <string name="config_support_tiny_garden">Support tiny garden</string>
+  <string name="config_support_mobile_actions">Support mobile actions</string>
+  <string name="config_support_thinking">Support thinking</string>
+  <string name="config_enable_thinking">Enable thinking</string>
+  <string name="config_max_result_count">Max result count</string>
+  <string name="config_use_gpu">Use GPU</string>
+  <string name="config_accelerator">Accelerator</string>
+  <string name="config_vision_accelerator">Vision accelerator</string>
+  <string name="config_compatible_accelerators">Compatible accelerators</string>
+  <string name="config_warm_up_iterations">Warm up iterations</string>
+  <string name="config_benchmark_iterations">Benchmark iterations</string>
+  <string name="config_iterations">Iterations</string>
+  <string name="config_theme">Theme</string>
+  <string name="config_name">Name</string>
+  <string name="config_model_type">Model type</string>
+  <string name="config_model">Model</string>
+  <string name="config_reset_conversation_turn_count">Number of turns before the conversation resets</string>
+  <string name="config_prefill_tokens">Prefill tokens</string>
+  <string name="config_decode_tokens">Decode tokens</string>
+  <string name="config_number_of_runs">Number of runs</string>
 
 </resources>

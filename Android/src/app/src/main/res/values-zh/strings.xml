@@ -73,6 +73,7 @@
   <string name="color">颜色</string>
   <string name="config_dialog_tab_model_configs">模型配置</string>
   <string name="config_dialog_tab_system_prompt">系统提示</string>
+  <string name="start">开始</string>
   <string name="continue_button_label">继续</string>
   <string name="conversation_history">对话历史</string>
   <string name="copy">复制</string>
@@ -359,6 +360,10 @@
   <string name="cd_model_settings_icon">模型设置</string>
   <!-- Content description spoken when the "reset session" icon is focused. [CHAR_LIMIT=NONE] -->
   <string name="cd_reset_session_icon">重置会话</string>
+  <!-- Content description spoken when the "unmute" icon is focused. [CHAR_LIMIT=NONE] -->
+  <string name="cd_unmute">取消静音</string>
+  <!-- Content description spoken when the "mute" icon is focused. [CHAR_LIMIT=NONE] -->
+  <string name="cd_mute">静音</string>
   <!-- Content description spoken when the "model picker chip" is focused. [CHAR_LIMIT=NONE] -->
   <string name="cd_change_model">当前模型为%1$s。点击更改模型。</string>
   <!-- Content description spoken when the "close image viewer" icon is focused. [CHAR_LIMIT=NONE] -->
@@ -467,5 +472,38 @@
   <string name="promo_gm4_description">Gemma 4 采用与 Gemini 3 相同的顶尖技术打造，将前沿智能带到您的移动和边缘设备。</string>
   <string name="promo_gm4_dismiss">关闭</string>
   <string name="promo_gm4_read_more">了解更多</string>
+
+  <!-- Strings for ConfigKeys -->
+  <string name="config_max_tokens">最大 Token 数</string>
+  <string name="config_dialog_title">配置</string>
+  <string name="config_topk">TopK</string>
+  <string name="config_topp">TopP</string>
+  <string name="config_temperature">温度</string>
+  <string name="config_default_max_tokens">默认最大 Token 数</string>
+  <string name="config_default_topk">默认 TopK</string>
+  <string name="config_default_topp">默认 TopP</string>
+  <string name="config_default_temperature">默认温度</string>
+  <string name="config_support_image">支持图片</string>
+  <string name="config_support_audio">支持音频</string>
+  <string name="config_support_tiny_garden">支持小小花园</string>
+  <string name="config_support_mobile_actions">支持手机操作</string>
+  <string name="config_support_thinking">支持思考</string>
+  <string name="config_enable_thinking">启用思考</string>
+  <string name="config_max_result_count">最大结果数量</string>
+  <string name="config_use_gpu">使用 GPU</string>
+  <string name="config_accelerator">加速器</string>
+  <string name="config_vision_accelerator">视觉加速器</string>
+  <string name="config_compatible_accelerators">兼容的加速器</string>
+  <string name="config_warm_up_iterations">预热迭代次数</string>
+  <string name="config_benchmark_iterations">基准测试迭代次数</string>
+  <string name="config_iterations">迭代次数</string>
+  <string name="config_theme">主题</string>
+  <string name="config_name">名称</string>
+  <string name="config_model_type">模型类型</string>
+  <string name="config_model">模型</string>
+  <string name="config_reset_conversation_turn_count">对话重置前的轮数</string>
+  <string name="config_prefill_tokens">预填充 Token</string>
+  <string name="config_decode_tokens">解码 Token</string>
+  <string name="config_number_of_runs">运行次数</string>
 
 </resources>
