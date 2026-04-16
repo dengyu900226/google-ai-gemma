@@ -60,17 +60,19 @@ class LlmChatTask @Inject constructor() : CustomTask {
     Task(
       id = BuiltInTaskId.LLM_CHAT,
       label = "AI Chat",
+      labelRes = R.string.llm_chat_label,
       category = Category.LLM,
       icon = Icons.Outlined.Forum,
       models = mutableListOf(),
       description = "Chat with on-device large language models",
+      descriptionRes = R.string.llm_chat_description,
       shortDescription = "Chat with an on-device LLM",
+      shortDescriptionRes = R.string.llm_chat_short_description,
       docUrl = "https://github.com/google-ai-edge/LiteRT-LM/blob/main/kotlin/README.md",
       sourceCodeUrl =
         "https://github.com/google-ai-edge/gallery/blob/main/Android/src/app/src/main/java/com/google/ai/edge/gallery/ui/llmchat/LlmChatModelHelper.kt",
       textInputPlaceHolderRes = R.string.text_input_placeholder_llm_chat,
     )
-
   override fun initializeModelFn(
     context: Context,
     coroutineScope: CoroutineScope,
@@ -141,12 +143,15 @@ class LlmAskImageTask @Inject constructor() : CustomTask {
   override val task: Task =
     Task(
       id = BuiltInTaskId.LLM_ASK_IMAGE,
-      label = "Ask Image",
+      label = "",
+      labelRes = R.string.llm_ask_image_label,
       category = Category.LLM,
       icon = Icons.Outlined.Mms,
       models = mutableListOf(),
-      description = "Ask questions about images with on-device large language models",
-      shortDescription = "Ask questions about images",
+      description = "",
+      descriptionRes = R.string.llm_ask_image_description,
+      shortDescription = "",
+      shortDescriptionRes = R.string.llm_ask_image_short_description,
       docUrl = "https://github.com/google-ai-edge/LiteRT-LM/blob/main/kotlin/README.md",
       sourceCodeUrl =
         "https://github.com/google-ai-edge/gallery/blob/main/Android/src/app/src/main/java/com/google/ai/edge/gallery/ui/llmchat/LlmChatModelHelper.kt",
@@ -205,13 +210,15 @@ class LlmAskAudioTask @Inject constructor() : CustomTask {
   override val task: Task =
     Task(
       id = BuiltInTaskId.LLM_ASK_AUDIO,
-      label = "Audio Scribe",
+      label = "",
+      labelRes = R.string.llm_ask_audio_label,
       category = Category.LLM,
       icon = Icons.Outlined.Mic,
       models = mutableListOf(),
-      description =
-        "Instantly transcribe and/or translate audio clips using on-device large language models",
-      shortDescription = "Transcribe and translate audio",
+      description = "",
+      descriptionRes = R.string.llm_ask_audio_description,
+      shortDescription = "",
+      shortDescriptionRes = R.string.llm_ask_audio_short_description,
       docUrl = "https://github.com/google-ai-edge/LiteRT-LM/blob/main/kotlin/README.md",
       sourceCodeUrl =
         "https://github.com/google-ai-edge/gallery/blob/main/Android/src/app/src/main/java/com/google/ai/edge/gallery/ui/llmchat/LlmChatModelHelper.kt",

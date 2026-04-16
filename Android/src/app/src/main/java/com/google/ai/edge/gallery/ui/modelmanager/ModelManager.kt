@@ -49,7 +49,7 @@ fun ModelManager(
   modifier: Modifier = Modifier,
 ) {
   // Set title based on the task.
-  val title = task.label
+  val title = task.getLabel()
   // Model count.
   val modelCount by remember {
     derivedStateOf {

@@ -50,8 +50,11 @@ class MobileActionsTask @Inject constructor() : CustomTask {
     Task(
       id = BuiltInTaskId.LLM_MOBILE_ACTIONS,
       label = "Mobile Actions",
+      labelRes = R.string.mobile_actions_label,
       description = "Perform various device actions through Function Gemma",
+      descriptionRes = R.string.mobile_actions_in_description,
       shortDescription = "Leverage device mobile actions",
+      shortDescriptionRes = R.string.mobile_actions_short_description,
       docUrl = "https://github.com/google-ai-edge/LiteRT-LM/blob/main/kotlin/README.md",
       sourceCodeUrl =
         "https://github.com/google-ai-edge/gallery/blob/main/Android/src/app/src/main/java/com/google/ai/edge/gallery/customtasks/mobileactions",

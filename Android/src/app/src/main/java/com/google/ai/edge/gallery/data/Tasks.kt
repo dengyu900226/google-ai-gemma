@@ -17,9 +17,11 @@
 package com.google.ai.edge.gallery.data
 
 import androidx.annotation.StringRes
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import com.google.ai.edge.gallery.R
 
 /**
@@ -43,6 +45,11 @@ data class Task(
   val label: String,
 
   /**
+   * String resource id for the label. If set, this will be used instead of [label].
+   */
+  @StringRes val labelRes: Int? = null,
+
+  /**
    * The category of the task.
    *
    * We've pre-defined several categories in [Category]. Feel free to create your own category.
@@ -62,8 +69,18 @@ data class Task(
    */
   val description: String,
 
+  /**
+   * String resource id for the description. If set, this will be used instead of [description].
+   */
+  @StringRes val descriptionRes: Int? = null,
+
   /** Shorter description (within 6 words) of the task. */
   val shortDescription: String = "",
+
+  /**
+   * String resource id for the short description. If set, this will be used instead of [shortDescription].
+   */
+  @StringRes val shortDescriptionRes: Int? = null,
 
   /**
    * (optional)
@@ -133,6 +150,14 @@ data class Task(
       id == BuiltInTaskId.LLM_ASK_IMAGE ||
       id == BuiltInTaskId.LLM_ASK_AUDIO
   }
+  @Composable
+  fun getLabel(): String = if (labelRes != null) stringResource(labelRes) else label
+
+  @Composable
+  fun getDescription(): String = if (descriptionRes != null) stringResource(descriptionRes) else description
+
+  @Composable
+  fun getShortDescription(): String = if (shortDescriptionRes != null) stringResource(shortDescriptionRes) else shortDescription
 }
 
 object BuiltInTaskId {

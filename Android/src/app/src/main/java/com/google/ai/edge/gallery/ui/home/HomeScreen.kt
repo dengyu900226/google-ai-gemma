@@ -528,14 +528,14 @@ fun HomeScreen(
         )
       },
       title = { Text(uiState.loadingModelAllowlistError) },
-      text = { Text("Please check your internet connection and try again later.") },
+      text = { Text(stringResource(R.string.error_check_internet)) },
       onDismissRequest = { modelManagerViewModel.loadModelAllowlist() },
       confirmButton = {
-        TextButton(onClick = { modelManagerViewModel.loadModelAllowlist() }) { Text("Retry") }
+        TextButton(onClick = { modelManagerViewModel.loadModelAllowlist() }) { Text(stringResource(R.string.retry)) }
       },
       dismissButton = {
         TextButton(onClick = { modelManagerViewModel.clearLoadModelAllowlistError() }) {
-          Text("Cancel")
+          Text(stringResource(R.string.cancel))
         }
       },
     )
@@ -664,11 +664,12 @@ private fun IntroText(enableAnimation: Boolean, gm4: Boolean) {
   val introText = buildAnnotatedString {
     val gemma4Url = "https://ai.google.dev/gemma"
     if (gm4) {
-      append("Discover the power of on-device AI models from the ")
-      append(buildTrackableUrlAnnotatedString(url = litertUrl, linkText = "LiteRT community"))
-      append(", featuring the all-new ")
-      append(buildTrackableUrlAnnotatedString(url = gemma4Url, linkText = "Gemma 4"))
-      append(".")
+      append(stringResource(R.string.intro_text_gm4_prefix))
+      append(buildTrackableUrlAnnotatedString(url = litertUrl, linkText = stringResource(R.string.intro_text_gm4_link_litert)))
+      append(", ")
+      append(stringResource(R.string.intro_text_gm4_featuring))
+      append(buildTrackableUrlAnnotatedString(url = gemma4Url, linkText = stringResource(R.string.intro_text_gm4_link_gemma)))
+      append(stringResource(R.string.intro_text_gm4_suffix))
     } else {
       append("${stringResource(R.string.app_intro)} ")
       append(
@@ -719,7 +720,7 @@ private fun TryGm4IntroText(enableAnimation: Boolean) {
       tint = MaterialTheme.colorScheme.primary,
     )
     Text(
-      text = "Try Gemma 4 today",
+      text = stringResource(R.string.try_gemma_4_today),
       style =
         MaterialTheme.typography.headlineSmall.copy(
           fontWeight = FontWeight.Medium,
@@ -731,7 +732,7 @@ private fun TryGm4IntroText(enableAnimation: Boolean) {
   }
 
   Text(
-    "Gemma 4 E2B & E4B are here! Try them in AI Chat, Agent Skills, or the use cases below.",
+    text = stringResource(R.string.gemma_4_e2b_e4b_description),
     style = MaterialTheme.typography.bodyMedium,
     modifier =
       Modifier.graphicsLayer {
@@ -859,13 +860,6 @@ private fun TaskList(
           translationY = (CONTENT_COMPOSABLES_OFFSET_Y.dp * (1 - progress)).toPx()
         },
     ) {
-      val chatToDescription =
-        mapOf(
-          BuiltInTaskId.LLM_CHAT to "Chat with the latest Gemma 4 model today",
-          // use "\u00a0" to make sure the word before and after it should always be together when
-          // wrapping lines.
-          BuiltInTaskId.LLM_AGENT_CHAT to "Have Gemma 4 complete agentic tasks for\u00A0you",
-        )
       for (task in
         listOf(
           modelManagerViewModel.getTaskById(BuiltInTaskId.LLM_CHAT)!!,
@@ -877,12 +871,11 @@ private fun TaskList(
           animate = !initialAnimationDone && enableAnimation,
           onClick = { navigateToTaskScreen(task) },
           modifier = Modifier.fillMaxWidth(),
-          description = chatToDescription[task.id]!!,
         )
       }
 
       Text(
-        text = "Explore other use cases",
+        text = stringResource(R.string.explore_other_use_cases),
         style =
           MaterialTheme.typography.headlineSmall.copy(
             fontWeight = FontWeight.Medium,
@@ -974,9 +967,18 @@ private fun TaskCard(
   animate: Boolean,
   onClick: () -> Unit,
   modifier: Modifier = Modifier,
-  description: String = "",
+  description: String? = null,
   square: Boolean = false,
 ) {
+  // Get localized task label
+  val taskLabel = if (task.labelRes != null) stringResource(task.labelRes) else task.label
+
+  // Get localized task description
+  val taskDescription = if (task.descriptionRes != null) stringResource(task.descriptionRes) else task.description
+
+  // Get localized task short description
+  val taskShortDescription = if (task.shortDescriptionRes != null) stringResource(task.shortDescriptionRes) else task.shortDescription
+
   // Observes the model count and updates the model count label with a fade-in/fade-out animation
   // whenever the count changes.
   val modelCount by remember {
@@ -989,14 +991,7 @@ private fun TaskCard(
       }
     }
   }
-  val modelCountLabel by remember {
-    derivedStateOf {
-      when (modelCount) {
-        1 -> "1 Model"
-        else -> "%d Models".format(modelCount)
-      }
-    }
-  }
+  val modelCountLabel = LocalContext.current.resources.getQuantityString(R.plurals.model_count, modelCount, modelCount)
   var curModelCountLabel by remember { mutableStateOf("") }
   var modelCountLabelVisible by remember { mutableStateOf(true) }
 
@@ -1025,7 +1020,7 @@ private fun TaskCard(
       )
     else 1f
 
-  val cbTask = stringResource(R.string.cd_task_card, task.label, task.models.size)
+  val cbTask = stringResource(R.string.cd_task_card, taskLabel, task.models.size)
   Card(
     modifier =
       modifier
@@ -1036,7 +1031,7 @@ private fun TaskCard(
     colors =
       CardDefaults.cardColors(
         containerColor =
-          if (description.isNotEmpty() || square) {
+          if (taskDescription.isNotEmpty() || square) {
             MaterialTheme.colorScheme.surfaceContainer
           } else {
 
@@ -1058,12 +1053,12 @@ private fun TaskCard(
             modifier = Modifier.clearAndSetSemantics {},
           )
           Text(
-            task.label,
+            taskLabel,
             color = MaterialTheme.colorScheme.onSurface,
             style = MaterialTheme.typography.titleMedium,
           )
           Text(
-            task.shortDescription,
+            taskShortDescription,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             style = MaterialTheme.typography.bodyMedium.copy(fontSize = 12.sp, lineHeight = 14.sp),
             modifier = Modifier.clearAndSetSemantics {},
@@ -1080,7 +1075,7 @@ private fun TaskCard(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
       ) {
-        if (description.isNotEmpty()) {
+        if (taskDescription.isNotEmpty()) {
           // Icon.
           TaskIcon(task = task, width = 40.dp)
 
@@ -1092,11 +1087,11 @@ private fun TaskCard(
               horizontalArrangement = Arrangement.SpaceBetween,
             ) {
               Text(
-                task.label,
+                taskLabel,
                 color = MaterialTheme.colorScheme.onSurface,
                 style = MaterialTheme.typography.titleMedium,
               )
-              if (task.newFeature) {
+                if (task.newFeature) {
                 Box(
                   modifier =
                     Modifier.offset(y = (-6).dp, x = 6.dp)
@@ -1107,7 +1102,7 @@ private fun TaskCard(
                   contentAlignment = Alignment.Center,
                 ) {
                   Text(
-                    "New",
+                    stringResource(R.string.new_feature),
                     color = MaterialTheme.customColors.newFeatureTextColor,
                     style = MaterialTheme.typography.labelLarge,
                   )
@@ -1115,7 +1110,7 @@ private fun TaskCard(
               }
             }
             Text(
-              description,
+              taskDescription,
               color = MaterialTheme.colorScheme.onSurfaceVariant,
               style =
                 MaterialTheme.typography.bodyMedium.copy(fontSize = 12.sp, lineHeight = 15.sp),
@@ -1127,14 +1122,14 @@ private fun TaskCard(
           Column {
             Row(verticalAlignment = Alignment.CenterVertically) {
               Text(
-                task.label,
+                taskLabel,
                 color = MaterialTheme.colorScheme.onSurface,
                 style = MaterialTheme.typography.titleMedium,
               )
               if (task.experimental) {
                 Icon(
                   painter = painterResource(R.drawable.ic_experiment),
-                  contentDescription = "Experimental",
+                  contentDescription = stringResource(R.string.experimental),
                   modifier = Modifier.size(20.dp).padding(start = 4.dp),
                   tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 )

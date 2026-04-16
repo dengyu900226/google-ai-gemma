@@ -115,7 +115,11 @@ fun ModelPageAppBar(
             modifier = Modifier.size(24.dp),
             contentDescription = null,
           )
-          Text(task.label, style = MaterialTheme.typography.titleMedium, color = tintColor)
+          Text(
+            if (task.labelRes != null) stringResource(task.labelRes) else task.label,
+            style = MaterialTheme.typography.titleMedium,
+            color = tintColor,
+          )
         }
 
         // Model chips pager.

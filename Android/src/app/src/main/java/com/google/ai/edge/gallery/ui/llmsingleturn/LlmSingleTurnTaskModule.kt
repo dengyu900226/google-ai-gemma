@@ -41,11 +41,14 @@ class LlmSingleTurnTask @Inject constructor() : CustomTask {
     Task(
       id = BuiltInTaskId.LLM_PROMPT_LAB,
       label = "Prompt Lab",
+      labelRes = R.string.prompt_lab_label,
       category = Category.LLM,
       icon = Icons.Outlined.Widgets,
       models = mutableListOf(),
       description = "Single turn use cases with on-device large language models",
+      descriptionRes = R.string.prompt_lab_description,
       shortDescription = "Single turn use cases",
+      shortDescriptionRes = R.string.prompt_lab_short_description,
       docUrl = "https://github.com/google-ai-edge/LiteRT-LM/blob/main/kotlin/README.md",
       sourceCodeUrl =
         "https://github.com/google-ai-edge/gallery/blob/main/Android/src/app/src/main/java/com/google/ai/edge/gallery/ui/llmchat/LlmChatModelHelper.kt",
