@@ -373,14 +373,14 @@ fun AgentChatScreen(
               )
               Text(
                 buildAnnotatedString {
-                  append("Use specialized, high-order reasoning by loading different skills or ")
+                  append(stringResource(R.string.agent_skills_empty_state_description_prefix))
                   append(
                     buildTrackableUrlAnnotatedString(
                       url = "https://github.com/google-ai-edge/gallery/tree/main/skills",
-                      linkText = "creating\u00A0your\u00A0own",
+                      linkText = stringResource(R.string.agent_skills_empty_state_description_middle),
                     )
                   )
-                  append(".\n\nTry tapping a sample prompt below to see Agent Skills in action!")
+                  append(stringResource(R.string.agent_skills_empty_state_description_suffix))
                 },
                 style =
                   MaterialTheme.typography.headlineSmall.copy(fontSize = 16.sp, lineHeight = 22.sp),
@@ -487,7 +487,7 @@ fun AgentChatScreen(
   if (showAlertForDisabledSkill) {
     AlertDialog(
       onDismissRequest = { showAlertForDisabledSkill = false },
-      title = { Text("The \"$disabledSkillName\" skill is currently disabled") },
+      title = { Text(stringResource(R.string.disabled_skill_alert_title, disabledSkillName)) },
       text = { Text(stringResource(R.string.enable_skill_dialog_content)) },
       confirmButton = {
         Button(onClick = { showAlertForDisabledSkill = false }) {

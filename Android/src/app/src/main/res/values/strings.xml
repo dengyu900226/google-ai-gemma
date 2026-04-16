@@ -267,6 +267,10 @@
   <string name="add_skill_manual_input_sheet_title">Create a skill</string>
   <string name="agent_skills">Agent Skills</string>
   <string name="agent_skills_description">Use specialized, high-order reasoning by loading different skills or creating your own.\n\nTry tapping a sample prompt below to see Agent Skills in action!</string>
+  <string name="agent_skills_empty_state_description_prefix">Use specialized, high-order reasoning by loading different skills or </string>
+  <string name="agent_skills_empty_state_description_middle">creating your own</string>
+  <string name="agent_skills_empty_state_description_suffix">.\n\nTry tapping a sample prompt below to see Agent Skills in action!</string>
+  <string name="disabled_skill_alert_title">The \"%1$s\" skill is currently disabled</string>
   <string name="disclaimer_dialog_content">Third-party skills are not authored or endorsed by Google. Google is not responsible for their contents, security, or data handling practices.\n\nPlease exercise caution before providing sensitive information, such as personal identification, tokens, or API keys.\n\nAny use of an Agent Skill is subject to the applicable terms for that Skill.</string>
   <string name="disclaimer_dialog_title">Add third-party skill</string>
   <string name="disclaimer_dialog_agree">Agree</string>

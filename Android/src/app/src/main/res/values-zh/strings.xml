@@ -266,6 +266,10 @@
   <string name="add_skill_manual_input_sheet_title">创建技能</string>
   <string name="agent_skills">Agent Skills</string>
   <string name="agent_skills_description">通过加载不同技能或创建自己的技能来使用专业化的高级推理。\n\n尝试点击下方的示例提示，看看智能体技能的实际效果！</string>
+  <string name="agent_skills_empty_state_description_prefix">通过加载不同技能或</string>
+  <string name="agent_skills_empty_state_description_middle"> 创建自己的技能 </string>
+  <string name="agent_skills_empty_state_description_suffix">来使用专业化的高级推理。\n\n尝试点击下方的示例提示，看看智能体技能的实际效果！</string>
+  <string name="disabled_skill_alert_title">\"%1$s\" 技能目前已禁用</string>
   <string name="disclaimer_dialog_content">第三方技能未经Google编写或认可。Google不对其内容、安全性或数据处理实践负责。\n\n在提供敏感信息（如个人身份、令牌或API密钥）之前，请谨慎行事。\n\n任何使用智能体技能的行为均须遵守该技能的适用条款。</string>
   <string name="disclaimer_dialog_title">添加第三方技能</string>
   <string name="disclaimer_dialog_agree">同意</string>
